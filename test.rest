@@ -1,6 +1,21 @@
 GET https://secret-lowlands-10364.herokuapp.com/plants
 
 ###
+
+GET https://secret-lowlands-10364.herokuapp.com/orders/5
+
+###
+
+POST https://secret-lowlands-10364.herokuapp.com/orders
+Content-Type: application/json
+
+{
+  "username": "fuzzy",
+  "address": "123 street",
+  "qty": 12,
+  "plantId": 258 
+}
+###
 GET http://localhost:3000/plants
 
 ###

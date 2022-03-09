@@ -29,6 +29,10 @@ GET http://localhost:3000/plants
 
 ###
 
+GET http://localhost:3000/orders
+
+###
+
 GET http://localhost:3000/orders/2
 
 ###
@@ -40,6 +44,6 @@ Content-Type: application/json
   "username": "fuzzy",
   "address": "123 street",
   "qty": 2,
-  "plantId": 190
+  "plantId": 2 
 }
 

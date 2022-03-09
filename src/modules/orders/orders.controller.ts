@@ -7,10 +7,10 @@ import {
   Param,
   Post,
 } from '@nestjs/common';
-import { Prisma, Order } from '@prisma/client';
+import { Order } from '@prisma/client';
 import { PlantsService } from '../plants/plants.service';
 import { OrdersService } from './orders.service';
-import { OrderWithPlantName } from './orders.types';
+import { CreateOrderDto, OrderWithPlantName } from './orders.types';
 
 @Controller('orders')
 export class OrdersController {
@@ -26,46 +26,53 @@ export class OrdersController {
 
   @Get(':id')
   async getOrderById(@Param('id') id: string): Promise<OrderWithPlantName> {
-    return this.ordersService.findOrder({
+    const order = await this.ordersService.findOrder({
       where: { id: Number(id) },
     });
+    if (!order) {
+      throw new HttpException(`Order #${id} not found!`, HttpStatus.NOT_FOUND);
+    }
+    return order;
   }
 
   @Post()
   async createOrder(
-    @Body()
-    reqData: {
-      plantId: number;
-      qty: number;
-      username: string;
-      address: string;
-    },
+    @Body() reqData: CreateOrderDto,
   ): Promise<OrderWithPlantName> {
     const { qty, plantId, address, username } = reqData;
-    const { qty: plantQty, price: plantPrice } =
-      await this.plantsService.getById({
-        where: { id: Number(plantId) },
-      });
+
+    const plant = await this.plantsService.getById({
+      where: { id: Number(plantId) },
+    });
+
+    if (!plant) {
+      throw new HttpException(
+        `Plant with id:${plantId} not found!`,
+        HttpStatus.NOT_FOUND,
+      );
+    }
+
+    const { qty: plantQty, price: plantPrice } = plant;
+
     if (plantQty < qty) {
       throw new HttpException('Plant out of stock!', HttpStatus.OK);
     }
-    const totalCost = plantPrice * qty;
-    const newPlantQty = plantQty - qty;
-    const orderInput: Prisma.OrderCreateInput = {
-      username,
-      address,
-      qty,
-      totalCost,
-      plant: {
-        connect: { id: plantId },
-      },
-    };
+
     this.plantsService.updateQty({
       where: { id: plantId },
-      data: { qty: newPlantQty },
+      data: { qty: plantQty - qty },
     });
+
     return this.ordersService.createOrder({
-      data: orderInput,
+      data: {
+        username,
+        address,
+        qty,
+        totalCost: plantPrice * qty,
+        plant: {
+          connect: { id: plantId },
+        },
+      },
     });
   }
 }

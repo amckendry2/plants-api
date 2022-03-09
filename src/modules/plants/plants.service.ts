@@ -14,7 +14,7 @@ export class PlantsService {
     where: Prisma.PlantWhereUniqueInput;
   }): Promise<Plant> {
     const { where } = params;
-    return await this.prismaService.plant.findUnique({
+    return this.prismaService.plant.findUnique({
       where,
     });
   }
@@ -24,7 +24,7 @@ export class PlantsService {
     where: Prisma.PlantWhereUniqueInput;
   }): Promise<Plant> {
     const { data, where } = params;
-    return await this.prismaService.plant.update({
+    return this.prismaService.plant.update({
       data: {
         qty: data.qty,
       },

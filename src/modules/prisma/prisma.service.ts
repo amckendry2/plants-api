@@ -12,6 +12,8 @@ export class PrismaService extends PrismaClient {
   async repopulate() {
     await this.order.deleteMany();
     await this.plant.deleteMany();
+    await this.$executeRaw`ALTER SEQUENCE "Order_id_seq" RESTART WITH 1`;
+    await this.$executeRaw`ALTER SEQUENCE "Plant_id_seq" RESTART WITH 1`;
     return this.plant.createMany({
       data: [
         {

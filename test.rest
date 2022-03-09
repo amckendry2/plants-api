@@ -47,3 +47,7 @@ Content-Type: application/json
   "plantId": 0 
 }
 
+###
+
+POST http://localhost:3000/reset
+

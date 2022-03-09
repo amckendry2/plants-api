@@ -12,9 +12,12 @@ GET https://herald-plants-api.herokuapp.com/orders      -> Get all orders
 GET https://herald-plants-api.herokuapp.com/orders/:id  -> Get order by id
 ```
 ```
+POST https://herald-plants-api.herokuapp.com/reset      -> Resets database to its initial state
+```
+```
 POST https://herald-plants-api.herokuapp.com/orders     -> Create new order
 ```
-Expected POST body:
+Expected /orders POST body:
 ```
 Content-Type: application/json
 

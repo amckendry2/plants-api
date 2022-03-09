@@ -6,7 +6,7 @@ GET https://secret-lowlands-10364.herokuapp.com/orders
 
 ###
 
-GET https://secret-lowlands-10364.herokuapp.com/orders/5
+GET https://secret-lowlands-10364.herokuapp.com/orders/7
 
 ###
 
@@ -14,10 +14,10 @@ POST https://secret-lowlands-10364.herokuapp.com/orders
 Content-Type: application/json
 
 {
-  "username": "fuzzy",
-  "address": "123 street",
+  "username": "test username",
+  "address": "test address",
   "qty": 12,
-  "plantId": 258 
+  "plantId": 0 
 }
 ###
 

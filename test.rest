@@ -7,7 +7,7 @@ GET https://herald-plants-api.herokuapp.com/orders
 
 ###
 
-GET https://herald-plants-api.herokuapp.com/orders/7
+GET https://herald-plants-api.herokuapp.com/orders/1
 
 ###
 

@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Plant {
+  id Int @id @default(autoincrement())
+  name String @unique
+  scientificName String
+  price Float
+  qty Int
+  fact String 
+  orders Order[]
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+  username String
+  address String
+  qty Int
+  totalCost Float
+  plant Plant @relation(fields: [plantId], references: [id])
+  plantId Int
+}

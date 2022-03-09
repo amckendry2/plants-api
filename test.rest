@@ -1,0 +1,18 @@
+GET http://localhost:3000/plants
+
+###
+
+GET http://localhost:3000/orders/2
+
+###
+
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+  "username": "fuzzy",
+  "address": "123 street",
+  "qty": 1,
+  "plantId": 192
+}
+

@@ -1,3 +1,4 @@
+//Production=======================
 GET https://herald-plants-api.herokuapp.com/plants
 
 ###
@@ -17,14 +18,14 @@ Content-Type: application/json
   "username": "test username",
   "address": "test address",
   "qty": 12,
-  "plantId": 0 
+  "plantId": 1
 }
 ###
 
-POST https://herald-plants-api.herokuapp.com/reset
+DELETE https://herald-plants-api.herokuapp.com/reset
 
 ###
-
+//Development======================
 GET http://localhost:3000/
 
 ###
@@ -44,10 +45,10 @@ Content-Type: application/json
   "username": "test username",
   "address": "test address",
   "qty": 12,
-  "plantId": 0 
+  "plantId": 1
 }
 
 ###
 
-POST http://localhost:3000/reset
+DELETE http://localhost:3000/reset
 

@@ -1,10 +1,10 @@
-import { Controller, Post } from '@nestjs/common';
+import { Controller, Delete } from '@nestjs/common';
 import { PrismaService } from './prisma.service';
 
 @Controller('reset')
 export class PrismaController {
   constructor(private prismaService: PrismaService) {}
-  @Post()
+  @Delete()
   async resetDatabase() {
     await this.prismaService.repopulate();
   }

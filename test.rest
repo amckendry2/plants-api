@@ -2,6 +2,10 @@ GET https://secret-lowlands-10364.herokuapp.com/plants
 
 ###
 
+GET https://secret-lowlands-10364.herokuapp.com/orders
+
+###
+
 GET https://secret-lowlands-10364.herokuapp.com/orders/5
 
 ###

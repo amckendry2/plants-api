@@ -7,7 +7,7 @@ import {
   Param,
   Post,
 } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
+import { Prisma, Order } from '@prisma/client';
 import { PlantsService } from '../plants/plants.service';
 import { OrdersService } from './orders.service';
 import { OrderWithPlantName } from './orders.types';
@@ -18,6 +18,11 @@ export class OrdersController {
     private ordersService: OrdersService,
     private plantsService: PlantsService,
   ) {}
+
+  @Get()
+  async getAllOrders(): Promise<Order[]> {
+    return this.ordersService.getAllOrders();
+  }
 
   @Get(':id')
   async getOrderById(@Param('id') id: string): Promise<OrderWithPlantName> {

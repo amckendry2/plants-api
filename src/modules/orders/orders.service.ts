@@ -1,11 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
+import { Order, Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { OrderWithPlantName } from './orders.types';
 
 @Injectable()
 export class OrdersService {
   constructor(private prismaService: PrismaService) {}
+
+  async getAllOrders(): Promise<Order[]> {
+    return this.prismaService.order.findMany();
+  }
 
   async findOrder(params: {
     where: Prisma.OrderWhereUniqueInput;

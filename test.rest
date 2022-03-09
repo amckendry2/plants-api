@@ -1,16 +1,16 @@
-GET https://secret-lowlands-10364.herokuapp.com/plants
+GET https://herald-plants-api.herokuapp.com/plants
 
 ###
 
-GET https://secret-lowlands-10364.herokuapp.com/orders
+GET https://herald-plants-api.herokuapp.com/orders
 
 ###
 
-GET https://secret-lowlands-10364.herokuapp.com/orders/7
+GET https://herald-plants-api.herokuapp.com/orders/7
 
 ###
 
-POST https://secret-lowlands-10364.herokuapp.com/orders
+POST https://herald-plants-api.herokuapp.com/orders
 Content-Type: application/json
 
 {
@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 ###
 
-POST https://secret-lowlands-10364.herokuapp.com/reset
+POST https://herald-plants-api.herokuapp.com/reset
 
 ###
 

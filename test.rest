@@ -41,9 +41,9 @@ POST http://localhost:3000/orders
 Content-Type: application/json
 
 {
-  "username": "fuzzy",
-  "address": "123 street",
-  "qty": 2,
-  "plantId": 2 
+  "username": "test username",
+  "address": "test address",
+  "qty": 12,
+  "plantId": 0 
 }
 

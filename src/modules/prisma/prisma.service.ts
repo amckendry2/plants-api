@@ -10,6 +10,7 @@ export class PrismaService extends PrismaClient {
   }
 
   async repopulate() {
+    await this.order.deleteMany();
     await this.plant.deleteMany();
     return this.plant.createMany({
       data: [

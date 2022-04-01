@@ -1,3 +1,5 @@
+Running at: https://herald-plants-api.herokuapp.com
+
 ### API Endpoints:
 ```
 GET https://herald-plants-api.herokuapp.com/            -> Redirects to /plants
